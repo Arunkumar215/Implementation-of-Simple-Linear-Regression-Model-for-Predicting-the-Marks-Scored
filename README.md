@@ -24,69 +24,71 @@ RegisterNumber:  212223220009
 */
 ```
 ```
-
-*/
-import numpy as np
 import pandas as pd
-from sklearn.metrics import mean_absolute_error, mean_squared_error
+import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.metrics import mean_absolute_error,mean_squared_error
+df=pd.read_csv("C:/Users/SMARTLINK/Downloads/student_scores.csv")
+df.head()
+
+df.tail()
+
+X=df.iloc[:,:-1].values
+X
+
+Y=df.iloc[:,1].values
+Y
+
+#spilitting training and test data
 from sklearn.model_selection import train_test_split
+X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=1/3,random_state=0)
+
 from sklearn.linear_model import LinearRegression
+regressor=LinearRegression()
+regressor.fit(X_train,Y_train)
+Y_pred=regressor.predict(X_test)
 
-df = pd.read_csv("student_scores.csv")
+#displaying predicted values
+Y_pred
 
-print(df.tail())
-print(df.head())
-df.info()
+Y_test
 
-x = df.iloc[:, :-1].values  # Hours
-y = df.iloc[:,:-1].values   # Scores
-
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=1/3, random_state=0)
-
-print("X_Training:", x_train)
-print("X_Test:", x_test)
-print("Y_Training:", y_train)
-print("Y_Test:", y_test)
-
-reg = LinearRegression()
-reg.fit(x_train, y_train)
-
-Y_pred = reg.predict(x_test)
-
-print("Predicted Scores:", Y_pred)
-print("Actual Scores:", y_test)
-
-a = Y_pred - y_test
-print("Difference (Predicted - Actual):", a)
-
-plt.scatter(x_train, y_train, color="green")
-plt.plot(x_train, reg.predict(x_train), color="red")
-plt.title('Training set (Hours vs Scores)')
+#graph plot for training data
+plt.scatter(X_train,Y_train,color="red")
+plt.plot(X_train,regressor.predict(X_train),color="blue")
+plt.title("Hours vs Scores(Training Set)")
 plt.xlabel("Hours")
 plt.ylabel("Scores")
 plt.show()
 
-plt.scatter(x_test, y_test, color="blue")
-plt.plot(x_test, reg.predict(x_test), color="green")
-plt.title('Testing set (Hours vs Scores)')
+plt.scatter(X_test,Y_test,color='green')
+plt.plot(X_train,regressor.predict(X_train),color='red')
+plt.title("Hours vs Scores(Testing set)")
 plt.xlabel("Hours")
 plt.ylabel("Scores")
 plt.show()
 
-mae = mean_absolute_error(y_test, Y_pred)
-mse = mean_squared_error(y_test, Y_pred)
-rmse = np.sqrt(mse)
+mse=mean_squared_error(Y_test,Y_pred)
+print('MSE = ',mse)
 
-print("Mean Absolute Error:", mae)
-print("Mean Squared Error:", mse)
-print("Root Mean Squared Error:", rmse)
+mae=mean_absolute_error(Y_test,Y_pred)
+print('MAE = ',mae)
+
+rmse=np.sqrt(mse)
+print('RMSE = ',rmse)
+
 ```
 
 ## Output:
+![image](https://github.com/user-attachments/assets/1a6ade56-a40d-4e39-aa31-8486eb8c1b93)
+![image](https://github.com/user-attachments/assets/e9fe0e31-b8e8-4219-b775-1c11a9774ac0)
+![image](https://github.com/user-attachments/assets/16752cef-ce04-483c-ad64-85ba43258044)
+![image](https://github.com/user-attachments/assets/ac9ee500-14b7-40d1-8afe-3c1d6392cf69)
+![image](https://github.com/user-attachments/assets/8578347e-0d2b-4261-8aa6-4372e6193e7c)
+![image](https://github.com/user-attachments/assets/4f8742fd-9722-401f-8cb6-f356a2f0c2ba)
+![image](https://github.com/user-attachments/assets/3ef609dd-19fa-4e29-8df1-bb438e9ff1a1)
 
 
-![image](https://github.com/user-attachments/assets/e8062421-d92a-4e4b-a452-06a50cb320e7)
 
 ## Result:
 Thus the program to implement the simple linear regression model for predicting the marks scored is written and verified using python programming.
