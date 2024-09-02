@@ -23,25 +23,7 @@ Developed by: Arunkumar S A
 RegisterNumber:  212223220009
 */
 ```
-```
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.metrics import mean_absolute_error,mean_squared_error
-df=pd.read_csv("C:/Users/SMARTLINK/Downloads/student_scores.csv")
-df.head()
 
-df.tail()
-
-X=df.iloc[:,:-1].values
-X
-
-Y=df.iloc[:,1].values
-Y
-
-#spilitting training and test data
-from sklearn.model_selection import train_test_split
-X_train,X_test,Y_train,Y_test=train_test_split(X,Y,test_size=1/3,random_state=0)
 
 from sklearn.linear_model import LinearRegression
 regressor=LinearRegression()
@@ -80,13 +62,15 @@ print('RMSE = ',rmse)
 ```
 
 ## Output:
-![image](https://github.com/user-attachments/assets/1a6ade56-a40d-4e39-aa31-8486eb8c1b93)
-![image](https://github.com/user-attachments/assets/e9fe0e31-b8e8-4219-b775-1c11a9774ac0)
-![image](https://github.com/user-attachments/assets/16752cef-ce04-483c-ad64-85ba43258044)
-![image](https://github.com/user-attachments/assets/ac9ee500-14b7-40d1-8afe-3c1d6392cf69)
-![image](https://github.com/user-attachments/assets/8578347e-0d2b-4261-8aa6-4372e6193e7c)
-![image](https://github.com/user-attachments/assets/4f8742fd-9722-401f-8cb6-f356a2f0c2ba)
-![image](https://github.com/user-attachments/assets/3ef609dd-19fa-4e29-8df1-bb438e9ff1a1)
+![image](https://github.com/user-attachments/assets/73511592-e734-408c-b938-e6dafdce443c)
+![image](https://github.com/user-attachments/assets/1d611005-1971-470b-82df-cb6a90a2ad85)
+![image](https://github.com/user-attachments/assets/0e7664b2-ba80-40f6-bff2-53628c042fd1)
+![image](https://github.com/user-attachments/assets/589f94c2-dd76-4e23-af8e-2f3277c7e58a)
+![image](https://github.com/user-attachments/assets/2304a966-acc0-4ad9-9e00-ce013876cd43)
+![image](https://github.com/user-attachments/assets/c59812ff-59cb-4de0-9fa3-3e9f66a884f2)
+![image](https://github.com/user-attachments/assets/bfc533d8-8788-4434-8385-b5b28f15ad02)
+![image](https://github.com/user-attachments/assets/8a948422-4bd3-42f2-8c30-5e3560b0aecb)
+![image](https://github.com/user-attachments/assets/af277aec-c0d3-4570-8c33-216b2114bdf8)
 
 
 
